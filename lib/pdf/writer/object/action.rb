@@ -27,7 +27,8 @@ class PDF::Writer::Object::Action < PDF::Writer::Object
       res << "\n/S /GoTo\n/D #{@parent.destinations[@label].oid} 0 R"
     elsif @type == 'URI'
       res << "\n/S /URI\n/URI ("
-      res << PDF::Writer.escape(@parent.arc4.encrypt(@label))
+      #res << PDF::Writer.escape(@parent.arc4.encrypt(@label))
+      res << PDF::Writer.escape(@label)
       res << ")\n"
     end
     res << ">>\nendobj"
